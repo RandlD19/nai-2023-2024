@@ -1,0 +1,12 @@
+function u = pomozna_c(f,tocke,dodatna_tocka)
+% sprejme funkcijo, urejen seznam točk, na
+% katerem funkcija alternirajoče spreminja predznak, ter še eno dodatno točko;
+% vrne pa urejen seznam točk, ki je enake dolžine kot vhodni, a namesto ene izmed
+% prvotnih točk vsebuje podano dodatno točko. Izhodni seznam mora ohraniti
+% lastnost, da funkcija na njem alternirajoče spreminja predznak.
+predznak = f(dodatna_tocka);
+for tocka=tocke
+    
+end
+end
+

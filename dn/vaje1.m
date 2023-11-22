@@ -11,6 +11,24 @@ x = linspace(a, b, 11);
 % end
 
 % Kantrovic
+k = linspace(0,200,201);
+j = (k-100)/100;
+primerjava1 = f(j);
 for i=n
-    kantorovicevaAproksimacija(f, a, b, i, x)
+    % kantorovicevaAproksimacija(f, a, b, i, x);
+    primerjava2 = kantorovicevaAproksimacija(f, a, b, i, j);
+    
+    plot(j,f(j));hold on;plot(j,primerjava2)
+    
 end
+odsekomaLinearnaAproksimacija(f, a, b,6, x)
+
+
+
+primerjava2 = kantorovicevaAproksimacija(f, a, b,14, j)
+
+
+
+
+
+max(abs(primerjava2-primerjava1))
