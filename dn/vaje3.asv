@@ -1,0 +1,5 @@
+f = @(x) exp(sin(x^2/10));
+a = 0;
+b = 2*pi;
+g = @(f,g) integral(@(x) f(x)*g(x),a,b);
+F = [@(x) 1,@(x) x,@(x) x^2,@(x) x^3];
