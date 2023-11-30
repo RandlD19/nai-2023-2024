@@ -16,4 +16,20 @@
 f = @(x)abs(x).*sin(2*exp(1.5*x)-1);
 a = -1;
 b = 1;
-remes(f,a,b,2,10)
+primejava1 = f(x);
+n = linspace(2,8,4);
+% for i = n
+%     koef = remes(f,a,b,2,10);
+% 
+% 
+% end
+[koef, ms] = remes(f,a,b,4,10);
+
+
+
+
+%x = linspace(-1,1)
+%y = polyval(flip(koef),x)
+%plot(x,y)
+%hold on;
+%plot(x,f(x))
