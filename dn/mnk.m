@@ -22,5 +22,7 @@ for k=1:n
 end
 % Rešimo sistem
 y = linsolve(G,d);
+G;
+obcutljivost = norm(inv(G))*norm(G);
 end
 

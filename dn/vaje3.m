@@ -2,17 +2,17 @@ f = @(x) exp(sin(x.^2/10));
 a = 0;
 b = 2*pi;
 % zvezni skalarni produkt 
-g = @(l,h) integral(@(x) l(x)*h(x),a,b,"ArrayValued",true);
+g = @(l,h) integral(@(x) l(x)*h(x),a, b, 'AbsTol',1e-14, 'RelTol',1e-14, 'ArrayValued', true);
 % polinom najboljše aproksimacije iz P_4 izražen v potenčni bazi
 n = 4;
 F = cell(1,n+1);
-F{1} = @(x) 1;
+F{1} = @(x) 0.*x + 1;
 F{2} = @(x) x;
 F{3} = @(x) x.^2;
 F{4} = @(x) x.^3; 
 F{5} = @(x) x.^4;
 
-g = @(l,h) integral(@(x) l(x)*h(x),a,b,"ArrayValued",true);
+g = @(l,h) integral(@(x) l(x)*h(x),a, b, 'AbsTol',1e-14, 'RelTol',1e-14, 'ArrayValued', true);
 % g(F{1},F{2});
 y = mnk(f,F,g);
 napakaZ = L2_napaka(a,b,f,F,y);
