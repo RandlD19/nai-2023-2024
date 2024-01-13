@@ -1,0 +1,14 @@
+clear all;
+clc;
+a = -1;
+b = 4;
+x = linspace(a,b,1001);
+f = @(x) exp(-x.^2);
+df = @(x) -2*x.*exp(-x.^2);
+ddf = @(x) 4*x.^2*exp(-x.^2) -2*exp(-x.^2);
+
+y = hermitovPolinom(f,df,ddf,a,b,x)
+
+
+
+
