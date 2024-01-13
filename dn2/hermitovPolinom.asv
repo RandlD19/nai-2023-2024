@@ -20,7 +20,7 @@ tabela(:, 1) = vrednosti';
 
 % Izračun deljenih diferenc
 for j = 2:n
-    for i = j:(n)
+    for i = j:n
         if tocke(i) ~= tocke(i-j+1)
             tabela(i, j) = (tabela(i, j-1) - tabela(i-1, j-1)) / (tocke(i)-tocke(i-j+1));
         else
@@ -34,17 +34,35 @@ for j = 2:n
     end
 end
 
-koef = fldiag(tabela)';
+f1 = @(x) x.^0;
+f2 = @(x) x+1;
+f3 = @(x) (x+1).^2;
+f4 = @(x) (x+1).^3;
+f5 = @(x) (x-4).*(x+1).^3;
+f6 = @(x) ((x-4).^2).*(x+1).^3;
+
+koef = diag(tabela)';
 
 bazni = @(x) x.^0;
 apr = @(t) 0.*t; % vzamemo funkcijo identično enako 0
 for i=1:n
     % na vsakem koraku prištejemo vodilni koef * bazni polinom (npr. 2.45x^2). Tako dobimo pnea po MNK
+    plot(x, bazni(x)); hold on;
     apr = @(t) apr(t) + koef(i).*bazni(t);
     bazni = @(x) bazni(x).*(x-tocke(i));
 end
-% apr = @(t) apr(t) + koef(end).*bazni(t);
+
 y = apr(x);
+
+% x = linspace(a, b, 100);
+% plot(x, f1(x)); hold on;
+% plot(x, f2(x)); hold on;
+% plot(x, f3(x)); hold on;
+% plot(x, f4(x)); hold on;
+% plot(x, f5(x)); hold on;
+% plot(x, f6(x)); hold on;
+% apr = @(t) apr(t) + koef(end).*bazni(t);
+
 
 end
 
