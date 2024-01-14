@@ -9,7 +9,8 @@ for n=1:4
     x_eval = linspace(a, b, num_points);
     % Interpolacija za f
     [y_f, koef_f] = trigonometricnaInterpolacija(f, a, b, n, x_eval);
-    koef_poly = polyfit(x_eval,f(x_eval),2*n);
+    x_poly = linspace(a, b, 2*n+1);
+    koef_poly = polyfit(x_poly,f(x_poly),2*n);
     y_poly = polyval(koef_poly, x_eval);
 
     % Izris funkcij in interpolantov

@@ -4,8 +4,9 @@ function [p,ms] = remes(f,a,b,n,k)
 % p = [a_0 ... a_n]
 % % polyval([an ... a0],x)!!!
 tol=10e-10;
-N=1000;
-E = linspace(a, b, n+2);
+N=1001;
+% E = linspace(a, b, n+2);
+E = [-1, -5/10, 0, 6/10, 1];
 ms = [];
 for i=1:k
     [g, m] = pomozna_a(f, E);
