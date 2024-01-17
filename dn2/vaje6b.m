@@ -4,9 +4,9 @@ f = @(x) cos(2*x);
 g = @(x) abs(x)*cos(x^2);
 a = -1;
 b = 1;
-n_tab = 2:2:50;
+n_tab = 2:2:20;
 j = linspace(a,b,11);
-figure; plot(j, f(j)); hold on
+% figure; plot(j, f(j)); hold on
 for i=1:length(n_tab)
     n = n_tab(i);
     x = linspace(a, b, n+1);
@@ -26,9 +26,13 @@ for i=1:length(n_tab)
         end
         c(i) = lambdaf;
     end
-    
+    % c'
     y = deBoor(t,c,j);
-    plot(j, y); hold on
-    napaka = max(abs(odsekomaLinearnaAproksimacija(f,a,b,n,j) - y))
+    y';
+    j = linspace(a,b,201);
+    % plot(j, y); hold on
+    kubicna = max(abs(deBoor(t,c,j)-f(j)))
+    LinearnaNapaka = max(abs(odsekomaLinearnaAproksimacija(f,a,b,n,j) - f(j)));
+    
 end
 
