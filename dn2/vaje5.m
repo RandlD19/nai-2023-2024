@@ -7,11 +7,11 @@ df = @(x) -2.*x.*exp(-x.^2);
 ddf = @(x) (4.*(x.^2)-2).*exp(-x.^2);
 
 % Točke za izračun residualov
-x_res = linspace(a, b, 1001);
+x_res = linspace(a, b, 11);
 f_values = f(x_res);
 
 % Vrednosti n
-n_values = [2, 4, 8, 16, 32, 64, 128, 256];
+n_values = 4;%[2, 4, 8, 16, 32, 64, 128, 256];
 
 % Izvajanje interpolacije in izračun napak
 for n = n_values
@@ -19,13 +19,14 @@ for n = n_values
     X = linspace(a, b, n+1);
 
     % Izračun vrednosti zlepka
-    y = hermitovZlepek(f, df, ddf, X, x_res); 
 
+    y = hermitovZlepek(f, df, ddf, X, x_res); 
+    y_poly = hermitovPolinom(f, df, ddf,a,b,x_res)'
     % Izris grafa
-    figure;
-    plot(x_res, f_values, 'b', x_res, y, 'r--');
-    legend('Originalna funkcija', 'Hermitov zlepek');
-    title(['Hermitov zlepek z n = ' num2str(n)]);
+    % figure;
+    % plot(x_res, f_values, 'b', x_res, y, 'r--');
+    % legend('Originalna funkcija', 'Hermitov zlepek');
+    % % title(['Hermitov zlepek z n = ' num2str(n)]);
 
     % Izračun maksimalne absolutne napake
     max_abs_error = max(abs(f_values - y));
